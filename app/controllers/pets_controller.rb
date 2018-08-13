@@ -14,6 +14,7 @@ class PetsController < ApplicationController
     @pet = Pet.create(params["pet"])
     if !params["owner"]["name"].empty?
       @pet.build_owner(name: params["owner"]["name"])
+      @pet.save
     end
     @pet.save
 
@@ -30,6 +31,7 @@ class PetsController < ApplicationController
     @pet.update(params["pet"])
     if !params["owner"]["name"].empty?
       @pet.build_owner(name: params["owner"]["name"])
+      @pet.save
     end
 
     redirect to "pets/#{@pet.id}"
